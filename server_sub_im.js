@@ -27,8 +27,9 @@ client.on('connect', function () {
 
 client.on('message', function (topic, message) {
   // message is Buffer
-  uid = topic.split("/")[1]
+  var uid = topic.split("/")[1]
   log.info("Server publish : " + 'noti/'+uid);
-  client.publish('noti/'+uid, {"code": global.Sys.cont.CODE_USER_IM} ,{qos:0});
+  var message = {"code": global.Sys.cont.CODE_USER_IM, "module": global.Sys.cont.MODULE_IM}
+  client.publish('noti/'+uid, JSON.stringify(message),{qos:0});
 });
 
