@@ -1,4 +1,6 @@
-
+/**
+* 服务端向即时消息接收用户推送来消息提示
+*/
 var mqtt = require('mqtt');
 var config = require('./config')
 var bunyan = require('bunyan');
@@ -8,7 +10,7 @@ var log = bunyan.createLogger({
 		{
 		  level: 'info',
 		  path: './logs/im_info.log'
-		  //stream: process.stdout            // log INFO and above to stdout 
+		  //stream: process.stdout     // log INFO and above to stdout 
 		},
 		{
 		  level: 'error',
@@ -27,9 +29,16 @@ client.on('connect', function () {
 
 client.on('message', function (topic, message) {
   // message is Buffer
-  var uid = topic.split("/")[1]
+  var uid = topic.split("/")[1];
   log.info("Server publish : " + 'noti/'+uid);
-  var message = {"code": global.Sys.cont.CODE_USER_IM, "module": global.Sys.cont.MODULE_IM}
+  var message = {"code": global.Sys.cont.CODE_USER_IM, "module": global.Sys.cont.MODULE_IM};
   client.publish('noti/'+uid, JSON.stringify(message),{qos:0});
 });
 
+// Important!!! 防止异常中断
+process.on('uncaughtException', function (err) {
+  //打印出错误
+  log.info(err);
+  //打印出错误的调用栈方便调试
+  log.info(err.stack);
+});

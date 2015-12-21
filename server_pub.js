@@ -1,12 +1,19 @@
+/**
+* 服务端向用户推送消息到达提示（非即时消息）
+*/
+
 var redis = require('redis');
 var bunyan = require('bunyan');
 var log = bunyan.createLogger({
 	name: 'server_pub',
 	streams: [
 		{
-		  level: 'info',
-		  path: './logs/info.log'
-		  //stream: process.stdout            // log INFO and above to stdout 
+			level: 'info',
+			path: './logs/info.log',
+			type: 'rotating-file',
+			period: '1d',   // daily rotation 
+			count: 30        // keep 30 back copies 
+		    //stream: process.stdout            // log INFO and above to stdout 
 		},
 		{
 		  level: 'error',
@@ -51,6 +58,13 @@ redis_cli.on("message", function (channel, message) {
 
 });
 
+// Important!!! 防止异常中断
+process.on('uncaughtException', function (err) {
+  //打印出错误
+  log.info(err);
+  //打印出错误的调用栈方便调试
+  log.info(err.stack);
+});
 
 /*
 if(msg.code == global.Sys.cont.NEW_USER_MESSAGE){

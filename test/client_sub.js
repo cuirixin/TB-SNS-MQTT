@@ -1,12 +1,17 @@
 
 var mqtt = require('mqtt');
 
-var client  = mqtt.connect('test.mosquitto.org', {clientId:'564462a194068f6ed9769a77',clean:false}); // test.mosquitto.org
+var client  = mqtt.connect('mqtt://localhost:5112', {clientId:"test", clean:false}); // test.mosquitto.org
 
 client.on('connect', function () {
   console.log("Connect Success.");
-  client.subscribe('noti/+',{qos:1});
+  client.subscribe('im/test',{qos:1});
 });
+
+client.on('reconnect', function(){
+  console.log("Reconnect Success." + Date.now());
+});
+
 
 client.on('message', function (topic, message) {
   // message is Buffer
