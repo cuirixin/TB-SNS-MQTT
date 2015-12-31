@@ -8,16 +8,19 @@ var log = bunyan.createLogger({
 	name: 'server_pub',
 	streams: [
 		{
+			/*
 			level: 'info',
 			path: './logs/info.log',
 			type: 'rotating-file',
 			period: '1d',   // daily rotation 
 			count: 30        // keep 30 back copies 
-		    //stream: process.stdout            // log INFO and above to stdout 
+			*/
+		    stream: process.stdout // 线上supervisor控制的log输出统一用stream: process.stdout
 		},
 		{
 		  level: 'error',
-		  path: './logs/error.log'  // log ERROR and above to a file 
+		  //path: './logs/error.log'
+		  stream: process.stderr
 		}
 	]
 });

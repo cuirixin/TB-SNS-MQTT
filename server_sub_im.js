@@ -1,4 +1,4 @@
-/**
+vim /**
 * 服务端向即时消息接收用户推送来消息提示
 */
 var mqtt = require('mqtt');
@@ -9,12 +9,13 @@ var log = bunyan.createLogger({
 	streams: [
 		{
 		  level: 'info',
-		  path: './logs/im_info.log'
-		  //stream: process.stdout     // log INFO and above to stdout 
+		  //path: './logs/im_info.log'
+		  stream: process.stdout     // log INFO and above to stdout 
 		},
 		{
 		  level: 'error',
-		  path: './logs/im_error.log'  // log ERROR and above to a file 
+		  //path: './logs/im_error.log'  // log ERROR and above to a file 
+		  stream: process.stdout
 		}
 	]
 });
