@@ -1,7 +1,6 @@
 /**
 * 服务端向用户推送消息到达提示（非即时消息）
 */
-
 var redis = require('redis');
 var bunyan = require('bunyan');
 var log = bunyan.createLogger({
