@@ -1,4 +1,5 @@
 var mqtt = require('mqtt');
+var nodemailer = require('nodemailer');
 var config = require('./config')
 // 不需要离线消息，cleanSession设置为true
 var mqtt_cli  = mqtt.connect(config.mqtt_url, {clean:true}); // test.mosquitto.org
@@ -28,6 +29,37 @@ exports.apply_for_friend = function (uid, msg) {
 	};
 	exports._publish_mqtt(topic, message);
 };
+
+/**
+* 发送找回密码邮件
+*/
+exports.send_forget_pwd_email = function (email, url) {
+	console.log("Engine send_forget_pwd_email");
+	html = "重新设置密码：<a href='"+url+"'>请点击这里设置</a>";
+	exports._send_email(email, "Exblorer Reset Password", html);
+};
+
+// create reusable transporter object using the default SMTP transport 
+var transporter = nodemailer.createTransport('smtps://no-reply@tubban.com:chino2014@smtp.exmail.qq.com');
+
+exports._send_email = function(to, subject, html){
+	var mailOptions = {
+	    from: 'Exborer 👥 <no-reply@tubban.com>', // sender address 
+	    to: to, // list of receivers 
+	    subject: subject, // Subject line 
+	    text: '', // plaintext body 
+	    html: html // html body 
+	};
+
+	transporter.sendMail(mailOptions, function(error, info){
+	    if(error){
+	        return console.log(error);
+	    }
+	    console.log('Message sent: ' + info.response);
+	});
+}
+
+
 
 /**
 * 新回复
