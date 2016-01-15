@@ -56,13 +56,13 @@ redis_cli.on("message", function (channel, message) {
     var msg = JSON.parse(message.toString());
 
 
-    log.info("Language: "+msg.extra.lang);
+    console.log("Language: "+msg.extra.lang);
 	switch (msg.extra.code) {
 		case global.Sys.cont.CODE_FORGET_PASSWORD_EMAIL:
 			engine.send_forget_pwd_email(msg.extra.email, msg.extra.url, msg.extra.lang)
 			break;
 		default:
-			log.error("Unkown message code: " + msg.extra.code);
+			console.log("Unkown message code: " + msg.extra.code);
 	}
 
 });
