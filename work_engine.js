@@ -42,7 +42,7 @@ exports.send_forget_pwd_email = function (email, url, lang) {
 			html = "重新设置密码：<a href='"+url+"'>请点击这里设置</a>";
 			break;
 		default:
-			log.error("Unkown lang: " + lang);
+			console.log("Unkown lang: " + lang);
 	}
 
 	exports._send_email(email, "Exblorer Reset Password", html);
