@@ -7,7 +7,7 @@ module.exports = {
         op: 'mongodb://10.252.77.207:27017/tubban_sns_op'
     },
     umeng : {
-        production_mode : true,
+        production_mode : 'true',
         message : {
             ios : {
                 AppKey : "56a0a4a0e0f55a3caf0029d3",
