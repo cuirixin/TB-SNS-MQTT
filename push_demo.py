@@ -30,15 +30,15 @@ def push_Apple_msg(device_token, title, msg, num, extra={}):
               'timestamp': str(timestamp),
               'device_tokens': device_token,
               'type': 'unicast',
+              'production_mode': 'false',
               'payload': {
+
                 "aps": {
                     "alert": msg,
                 },
-              'body': {'ticker': 'Hello World',
-                                   'title':'你好',
-                                   'text':'来自友盟推送',
-                                   'after_open': 'go_app'},
-                          'display_type': 'notification'
+                "extra": extra,
+                "title": title,
+                'display_type': 'notification'
               }
     }
     post_body = json.dumps(params)
@@ -57,4 +57,4 @@ def md5(s):
     m = hashlib.md5(s)
     return m.hexdigest()
 
-push_Apple_msg("e69c242824732cf7d0887faee528844a15305e97d7e8bef80114d70204e875a6", 'Y', 'Y', 1, {})
+push_Apple_msg("c4b3dc55255e79f3365bdcf515e769d9f3ba99fd1333778bb3ed32507cf7f63a", '小仔', '牛逼啊', 1, {})
