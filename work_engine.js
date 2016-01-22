@@ -230,7 +230,7 @@ exports._push_Apple_msg = function(token_str, title, msg, num, extra){
       "timestamp": timestamp,
       "type":"unicast",
       "device_tokens":token_str,  
-      'production_mode': 'false', // 开发环境下必须传值false，否则默认为发布环境
+      'production_mode': config.umeng.production_mode, // 开发环境下必须传值false，否则默认为发布环境
       "payload": { 
         "aps": {
             "alert": msg,

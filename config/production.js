@@ -1,12 +1,13 @@
 
 module.exports = {
-    mqtt_url: "mqtt://115.28.235.98",
-    redis_url: 'redis://root:UYdjD93@127.0.0.1:6379',
+    mqtt_url: "mqtt://10.252.77.207",
+    redis_url: 'redis://root:UYdjD93@10.252.77.207:6379'
     mongodb_url : {
-        main: 'mongodb://127.0.0.1:27017/tubban_sns',
-        op: 'mongodb://127.0.0.1:27017/tubban_sns_op'
+        main: 'mongodb://10.252.77.207:27017/tubban_sns',
+        op: 'mongodb://10.252.77.207:27017/tubban_sns_op'
     },
     umeng : {
+        production_mode : true,
         message : {
             ios : {
                 AppKey : "56a0a4a0e0f55a3caf0029d3",
