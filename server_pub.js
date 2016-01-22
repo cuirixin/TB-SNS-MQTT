@@ -1,5 +1,5 @@
 /**
-* 服务端向用户推送消息到达提示（非即时消息）
+* 服务端向用户推送消息到达提示
 */
 
 var redis = require('redis');
@@ -28,9 +28,10 @@ var log = bunyan.createLogger({
 var config = require('./config');
 var engine = require('./work_engine');
 
+// 连接Redis
 var redis_cli = redis.createClient(config.redis_url);
 
-// 推送相关
+// 推送相关，订阅INFO_ALERT主题
 var queue = global.Sys.cont.QUEUE_INFO_ALERT;
 
 redis_cli.subscribe(queue);
@@ -43,11 +44,14 @@ redis_cli.on("subscribe", function (channel) {
 redis_cli.on("message", function (channel, message) {
 
     //console.log("Channel message: " + channel);
+
+    // console.log(message);
+
     var msg = JSON.parse(message.toString());
 
 	switch (msg.extra.code) {
 		case global.Sys.cont.CODE_USER_IM:
-			engine.user_im(msg.receiver, msg)
+			//engine.user_im(msg.receiver, msg)
 			break;
 		case global.Sys.cont.CODE_ADD_FRIEND_REQUEST:
 			engine.apply_for_friend(msg.receiver, msg)
