@@ -1,7 +1,7 @@
 
 module.exports = {
     mqtt_url: "mqtt://10.252.77.207",
-    redis_url: 'redis://root:UYdjD93@10.252.77.207:6379'
+    redis_url: 'redis://root:UYdjD93@10.252.77.207:6379',
     mongodb_url : {
         main: 'mongodb://10.252.77.207:27017/tubban_sns',
         op: 'mongodb://10.252.77.207:27017/tubban_sns_op'
