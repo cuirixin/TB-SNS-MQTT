@@ -225,6 +225,8 @@ exports._push_Apple_msg = function(token_str, title, msg, num, extra){
     url = "http://msg.umeng.com/api/send";
     method = 'POST';
 
+    console.log('production_mode: ', config.umeng.production_mode);
+
     params = {
       "appkey": appkey, 
       "timestamp": timestamp,
