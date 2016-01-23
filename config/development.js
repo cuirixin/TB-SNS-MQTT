@@ -14,6 +14,16 @@ module.exports = {
                 AppMasterSecret : "lqumzi2v6j9go4y7b9icbwq4zlnoy99o",
             }
         }
+    },
+    rongcloud : {
+        APP_KEY: "bmdehs6pdw0ys", 
+        APP_SECRET: "Zi9cegxxo6oX5s",
+        ADMIN_ID: "56a3323894068f3f4e8b3696",
+
+        SELF_DEFINED_MSGTYPE : {
+            FRIEND : 'RC:EBFriendMsg',
+            RESPONSE : 'RC:EBResponseMsg'
+        }
     }
 }; 
 
