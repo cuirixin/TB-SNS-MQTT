@@ -71,8 +71,8 @@ exports.apply_for_friend = function (uid, msg) {
 
 			//console.log(token.device, title, content);
 
-			var fromUserId = config.rongcloud.ADMIN_ID;
-			var toUserIds = [msg.receiver];
+			var fromUserId = "user-" + config.rongcloud.ADMIN_ID;
+			var toUserIds = ["user-" + msg.receiver];
 			var objectName = config.rongcloud.SELF_DEFINED_MSGTYPE.FRIEND;
 
 			notify_engine.message_system_publish(fromUserId, toUserIds, objectName, content, content, {});
@@ -158,8 +158,8 @@ exports.subject_response = function (uid, msg) {
 
 			//console.log(token.device, title, content);
 
-			var fromUserId = config.rongcloud.ADMIN_ID;
-			var toUserIds = [msg.receiver];
+			var fromUserId = "user-" + config.rongcloud.ADMIN_ID;
+			var toUserIds = ["user-" + msg.receiver];
 			var objectName = config.rongcloud.SELF_DEFINED_MSGTYPE.RESPONSE;
 
 			notify_engine.message_system_publish(fromUserId, toUserIds, objectName, content, content, {});
