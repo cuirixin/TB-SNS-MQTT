@@ -74,8 +74,11 @@ exports.apply_for_friend = function (uid, msg) {
 			var fromUserId = "user-" + config.rongcloud.ADMIN_ID;
 			var toUserIds = ["user-" + msg.receiver];
 			var objectName = config.rongcloud.SELF_DEFINED_MSGTYPE.FRIEND;
+			var pushData = {
+				"code": msg.extra.code
+			};
 
-			notify_engine.message_system_publish(fromUserId, toUserIds, objectName, content, content, {});
+			notify_engine.message_system_publish(fromUserId, toUserIds, objectName, content, content, pushData);
 
 			
 		}else{
@@ -161,8 +164,11 @@ exports.subject_response = function (uid, msg) {
 			var fromUserId = "user-" + config.rongcloud.ADMIN_ID;
 			var toUserIds = ["user-" + msg.receiver];
 			var objectName = config.rongcloud.SELF_DEFINED_MSGTYPE.RESPONSE;
+			var pushData = {
+				"code": msg.extra.code
+			};
 
-			notify_engine.message_system_publish(fromUserId, toUserIds, objectName, content, content, {});
+			notify_engine.message_system_publish(fromUserId, toUserIds, objectName, content, content, pushData);
 
 		}else{
 			console.log("No token");
