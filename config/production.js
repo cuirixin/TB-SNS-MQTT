@@ -19,6 +19,7 @@ module.exports = {
         APP_KEY: "bmdehs6pdw0ys", 
         APP_SECRET: "Zi9cegxxo6oX5s",
         ADMIN_ID: "56a3323894068f3f4e8b3696",
+        ADMIN_FRIEND_ID: "56a9c1a2c80e9610a088dae2",
         
         SELF_DEFINED_MSGTYPE : {
             FRIEND : 'RC:EBFriendMsg',
