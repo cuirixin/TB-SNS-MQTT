@@ -70,8 +70,7 @@ exports.apply_for_friend = function (uid, msg) {
 			}
 
 			//console.log(token.device, title, content);
-
-			var fromUserId = "user-" + config.rongcloud.ADMIN_ID;
+			var fromUserId = "user-" + config.rongcloud.ADMIN_FRIEND_ID;
 			var toUserIds = ["user-" + msg.receiver];
 			var objectName = config.rongcloud.SELF_DEFINED_MSGTYPE.FRIEND;
 			var pushData = {
