@@ -10,21 +10,14 @@ var user_model = require('./models/user');
 
 var assert = require('assert-plus');
 
+var email_body = require('./lib/email_body');
+
 /**
 * 发送找回密码邮件
 */
 exports.send_forget_pwd_email = function (email, url, lang) {
 	console.log("Engine send_forget_pwd_email");
-	html = "Reset password：<a href='"+url+"'>Press</a>";
-	
-	switch (lang) {
-		case 'zh-CN':
-			html = "重新设置密码：<a href='"+url+"'>请点击这里设置</a>";
-			break;
-		default:
-			console.log("Unkown lang: " + lang);
-	}
-
+	html = email_body.get_forget_pwd_email(lang, email, url)
 	exports._send_email(email, "Exblorer Reset Password", html);
 };
 
