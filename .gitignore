@@ -1,3 +1,5 @@
 config.js
 logs/*.log
 .project
+config
+./config/*
